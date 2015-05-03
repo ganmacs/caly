@@ -1,0 +1,5 @@
+#!/usr/bin/env ruby
+$LOAD_PATH.unshift File.expand_path('../../lib', __FILE__)
+require 'caly'
+
+p Caly::Runner.new('(12 + (1 + 2 * 100)) * 10 - 10').run
