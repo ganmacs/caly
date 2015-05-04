@@ -46,7 +46,7 @@ module Caly
     def term
       val = factor
       while @tokens.size > @i && %w(* /).include?(@tokens[@i].value)
-        op = @tokens[@i].value
+        op = @tokens[@i]
         @i += 1
         val2 = term
         val = Caly::Binary.new(val, op, val2)
