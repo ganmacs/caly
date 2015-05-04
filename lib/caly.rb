@@ -1,5 +1,6 @@
 require 'lexer'
 require 'parser'
+require 'env'
 
 module Caly
   class Runner
@@ -9,7 +10,11 @@ module Caly
     end
 
     def run
-      Caly::Parser.new.call(@tokens).eval
+      Caly::Parser.new.call(@tokens).map { |e| e.eval(env) }
+    end
+
+    def env
+      @env ||= Env.new
     end
   end
 end
