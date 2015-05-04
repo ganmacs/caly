@@ -10,7 +10,7 @@ module Caly
       ret
     end
 
-    # sate = IDEN "=" expr EOL | expr EOL
+    # state = IDEN "=" expr EOL | expr EOL
     def state
       iden = nil
       op = nil
