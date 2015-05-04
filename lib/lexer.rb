@@ -13,20 +13,18 @@ module Caly
       while @exp.size > i
         case @exp[i]
         when /[0-9]/
-          token = ''
-          while @exp.size > i && @exp[i].match(/[0-9]/)
-            token += @exp[i]
+          token = @exp[i]
+          while @exp.size > i + 1 && @exp[i + 1].match(/[0-9]/)
             i += 1
+            token += @exp[i]
           end
-          i -= 1
           result << Token.new(:num, token)
         when /[a-z]/
-          token = ''
-          while @exp.size > i && @exp[i].match(/[a-z0-9]/)
-            token += @exp[i]
+          token = @exp[i]
+          while @exp.size > i + 1 && @exp[i + 1].match(/[a-z0-9]/)
             i += 1
+            token += @exp[i]
           end
-          i -= 1
           result << Token.new(:iden, token)
         when /\n/
           result << Token.new(:eol, @exp[i])
